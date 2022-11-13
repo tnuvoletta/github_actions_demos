@@ -7,7 +7,6 @@ on: [workflow_dispatch]
 
 jobs:
   job1:
-    name: initialize
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -23,7 +22,7 @@ jobs:
           Write-Host "v2= " $Env:v2
           Write-Host "v3= " $Env:v3
           Write-Host "localv1= " $Env:localv1
-    - name: step 2 - same job initialize
+      - name: step 2 - same job initialize
         shell: pwsh
         env:
           localv2: 'Hello, you'
@@ -35,7 +34,6 @@ jobs:
           Write-Host "localv1= " $Env:localv2
   job2:
     needs: job1
-    name: Consume
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
