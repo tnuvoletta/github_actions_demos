@@ -1,0 +1,49 @@
+name: env global
+env:
+  v1:
+  v2:
+  v3:
+on: [workflow_dispatch]
+
+jobs:
+    job1:
+      name: initialize
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: step 1 - assign
+          shell: pwsh
+          env:
+            localv1: 'Hello, World'
+          run: |
+            $Env:v1 = 1
+            $Env:v1 = 2
+            $Env:v1 = 3
+            Write-Host "v1= " $Env:v1
+            Write-Host "v2= " $Env:v2
+            Write-Host "v3= " $Env:v3
+            Write-Host "localv1= " $Env:localv1
+      - name: step 2 - same job initialize
+          shell: pwsh
+          env:
+            localv2: 'Hello, you'
+          run: |
+            Write-Host "Use env vars from another step of the same job"
+            Write-Host "v1= " $Env:v1
+            Write-Host "v2= " $Env:v2
+            Write-Host "v3= " $Env:v3
+            Write-Host "localv1= " $Env:localv2
+          
+    job2:
+      needs: job1
+      name: Consume
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: read
+          shell: pwsh
+          run: |
+            Write-Host "Use env vars from another job"
+            Write-Host "v1= " $Env:v1
+            Write-Host "v2= " $Env:v2
+            Write-Host "v3= " $Env:v3
