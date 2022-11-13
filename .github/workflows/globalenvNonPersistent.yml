@@ -1,4 +1,4 @@
-name: env global
+name: No persistent for global env vars
 env:
   V1: 0
   V2: 0
@@ -16,12 +16,14 @@ jobs:
         env:
           localv1: 'Hello, World'
         run: |
+          
           $Env:V1 = 1
           $Env:V2 = 2
           $Env:V3 = 3
           Write-Host "v1= " $Env:V1
           Write-Host "v2= " $Env:V2
           Write-Host "v3= " $Env:V3
+          Write-Host "The assignment of values to the 3 global env vars won't persist in the next step/ job
           Write-Host "localv1= " $Env:localv1
       - name: step 2 - same job initialize
         shell: pwsh
@@ -29,6 +31,7 @@ jobs:
           localv2: 'Hello, you'
         run: |
           Write-Host "Use env vars from another step of the same job"
+          Write-Host "The values of the 3 global env vars assigned in the previous step don't persist in this step
           Write-Host "v1= "  $Env:V1
           Write-Host "v2= "  $Env:V1
           Write-Host "v3= "  $Env:V1
@@ -45,3 +48,4 @@ jobs:
           Write-Host "v1= "  $Env:V1
           Write-Host "v2= "  $Env:V1
           Write-Host "v3= "  $Env:V1
+          Write-Host "The values of the 3 global env vars assigned in the previous job don't persist in this job
