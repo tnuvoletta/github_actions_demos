@@ -50,8 +50,9 @@ jobs:
           Write-Host "The values of the 3 global env vars assigned in the previous job don't persist in this job"
           bash
           echo "Switch to bash shell to assign env.V1 to 999 for the next step"
-          echo "V1=999" >> $GITHUB_ENV
+          echo "V4=999" >> $GITHUB_ENV
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ env.V1 }}" # This will output '999'
+          echo "Use env variable defined in the previous step in job2"
+          echo "${{ env.V4 }}" # This will output '999'
