@@ -16,15 +16,14 @@ jobs:
         env:
           localv1: 'Hello, World'
         run: |
-          
           $Env:V1 = 1
           $Env:V2 = 2
           $Env:V3 = 3
           Write-Host "v1= " $Env:V1
           Write-Host "v2= " $Env:V2
           Write-Host "v3= " $Env:V3
-          Write-Host "The assignment of values to the 3 global env vars won't persist in the next step/ job
-          Write-Host "localv1= " $Env:localv1
+          Write-Host "The assignment of values to the 3 global env vars won't persist in the next step/ job"
+          Write-Host "localv1= " $Elocalv1
       - name: step 2 - same job initialize
         shell: pwsh
         env:
