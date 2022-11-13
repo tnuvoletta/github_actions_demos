@@ -62,4 +62,5 @@ jobs:
           echo "Use env variable defined in the previous step in job2"
           echo "Output env var V4 set in the previous step of Job2- V4 is:  "
           echo "${{ env.V4 }}" # This will output '999'
+          echo $GITHUB_ENV
           cat $GITHUB_ENV
