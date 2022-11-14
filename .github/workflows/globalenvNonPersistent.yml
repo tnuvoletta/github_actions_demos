@@ -74,7 +74,7 @@ jobs:
           echo "${{ env.V4 }}"
           echo $GITHUB_ENV
           cat $GITHUB_ENV
-      - name: stiep 3
+      - name: step 3
         id: step_three
         shell: pwsh
         run: |
@@ -84,9 +84,15 @@ jobs:
           Write-Host "v3= "  $Env:V3
           Write-Host "v4= "  $Env:V4
           Write-Host "The values of the 4 global env vars persisted in step 2 is available in step 3"
-          
           Write-Host $Env:GITHUB_ENV
           Get-Content -Path $Env:GITHUB_ENV
+      - name: step 4
+        shell: bash
+        run: |
+          echo "This step show how to persist env vars using bash shell"
+          echo "V5=500" >> $GITHUB_ENV
+          echo "V6=600" >> $GITHUB_ENV
+      
   job3:
     needs: job2
     runs-on: ubuntu-latest
@@ -100,6 +106,8 @@ jobs:
           Write-Host "v2= "  $Env:V2
           Write-Host "v3= "  $Env:V3
           Write-Host "v4= "  $Env:V4
+          Write-Host "v5= "  $Env:V5
+          Write-Host "v6= "  $Env:V6
           
           Write-Host $Env:GITHUB_ENV
           Get-Content -Path $Env:GITHUB_ENV
