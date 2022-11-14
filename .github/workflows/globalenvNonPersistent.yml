@@ -72,8 +72,7 @@ jobs:
           echo "${{ env.V2 }}" 
           echo "${{ env.V3 }}" 
           echo "${{ env.V4 }}"
-          echo $GITHUB_ENV
-          cat $GITHUB_ENV
+          
       - name: step 3
         id: step_three
         shell: pwsh
@@ -92,8 +91,20 @@ jobs:
           echo "This step show how to persist env vars using bash shell"
           echo "V5=500" >> $GITHUB_ENV
           echo "V6=600" >> $GITHUB_ENV
-      
+          echo $GITHUB_ENV
+          cat $GITHUB_ENV
+      - name: step 5
+        shell: bash
+        run: |
+          echo "This step show how to access the env vars assigned in the previous step"
+          echo "${{ env.V1 }}" 
+          echo "${{ env.V2 }}" 
+          echo "${{ env.V3 }}" 
+          echo "${{ env.V4 }}"
+          echo "${{ env.V5 }}"
+          echo "${{ env.V6 }}"
   job3:
+  
     needs: job2
     runs-on: ubuntu-latest
     steps:
