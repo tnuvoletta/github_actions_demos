@@ -1,3 +1,9 @@
+name: ShareOutputs
+# This example demonstrates the following topics:
+# 1. Sharing outputs between jobs
+# 2. Setting outputs value using bash shell
+# 3. Setting outputs using PowerShell
+on: [workflow_dispatch]
 jobs:
   job1:
     runs-on: ubuntu-latest
