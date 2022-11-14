@@ -34,8 +34,8 @@ jobs:
           out2: ${{needs.job1.outputs.output2}}
           out3: ${{needs.job1.outputs.output3}}
         run: |
-          Write-Host "Output1 is: " $Env.out1
-          Write-Host "Output2 is: " $Env.out2
-          Write-Host "Output3 is: " $Env.out3
+          Write-Host "Output1 is: " $Env:out1
+          Write-Host "Output2 is: " $Env:out2
+          Write-Host "Output3 is: " $Env:out3
         
           
