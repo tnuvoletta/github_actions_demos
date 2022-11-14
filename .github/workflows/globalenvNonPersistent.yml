@@ -52,15 +52,25 @@ jobs:
           Write-Host "v2= "  $Env:V1
           Write-Host "v3= "  $Env:V1
           Write-Host "The values of the 3 global env vars assigned in the previous job don't persist in this job"
-          echo "V4=999" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append  
-          Write-Host "V4 was set to: " $Env:V4
+          # To persist the values of env vars, you need to do the following:
+          echo "V1=100" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append  
+          echo "V2=200" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append  
+          echo "V3=300" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append  
+          echo "V4=999" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          Write-Host "V1 was set to 100 - But not yet available: " $Env:V1
+          Write-Host "V2 was set to 200 - But not yet available: " $Env:V2
+          Write-Host "V3 was set to 300 - But not yet available: " $Env:V3
+          Write-Host "V4 was set to 999 - But not yet available: " $Env:V4
           Write-Host $Env:GITHUB_ENV
           Get-Content -Path $Env:GITHUB_ENV
       - name: Use the value
         id: step_two
         run: |
           echo "Use env variable defined in the previous step in job2"
-          echo "Output env var V4 set in the previous step of Job2- V4 is:  "
-          echo "${{ env.V4 }}" # This will output '999'
+          echo "Output env vars  set in the previous step of Job2:  "
+          echo "${{ env.V1 }}" 
+          echo "${{ env.V2 }}" 
+          echo "${{ env.V3 }}" 
+          echo "${{ env.V4 }}"
           echo $GITHUB_ENV
           cat $GITHUB_ENV
