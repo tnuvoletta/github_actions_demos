@@ -49,8 +49,8 @@ jobs:
         run: |
           Write-Host "Use env vars from another job"
           Write-Host "v1= "  $Env:V1
-          Write-Host "v2= "  $Env:V1
-          Write-Host "v3= "  $Env:V1
+          Write-Host "v2= "  $Env:V2
+          Write-Host "v3= "  $Env:V3
           Write-Host "The values of the 3 global env vars assigned in the previous job don't persist in this job"
           # To persist the values of env vars, you need to do the following:
           echo "V1=100" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append  
@@ -80,10 +80,26 @@ jobs:
         run: |
           Write-Host "Use env vars from step 2"
           Write-Host "v1= "  $Env:V1
-          Write-Host "v2= "  $Env:V1
-          Write-Host "v3= "  $Env:V1
-          Write-Host "v4= "  $Env:V1
+          Write-Host "v2= "  $Env:V2
+          Write-Host "v3= "  $Env:V3
+          Write-Host "v4= "  $Env:V4
           Write-Host "The values of the 4 global env vars persisted in step 2 is available in step 3"
+          
+          Write-Host $Env:GITHUB_ENV
+          Get-Content -Path $Env:GITHUB_ENV
+  job3:
+    needs: job2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: read
+        shell: pwsh
+        run: |
+          Write-Host "Use env vars from another job"
+          Write-Host "v1= "  $Env:V1
+          Write-Host "v2= "  $Env:V2
+          Write-Host "v3= "  $Env:V3
+          Write-Host "v4= "  $Env:V4
           
           Write-Host $Env:GITHUB_ENV
           Get-Content -Path $Env:GITHUB_ENV
