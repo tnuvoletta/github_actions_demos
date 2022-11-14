@@ -74,3 +74,16 @@ jobs:
           echo "${{ env.V4 }}"
           echo $GITHUB_ENV
           cat $GITHUB_ENV
+      - name: stiep 3
+        id: step_three
+        shell: pwsh
+        run: |
+          Write-Host "Use env vars from step 2"
+          Write-Host "v1= "  $Env:V1
+          Write-Host "v2= "  $Env:V1
+          Write-Host "v3= "  $Env:V1
+          Write-Host "v4= "  $Env:V1
+          Write-Host "The values of the 4 global env vars persisted in step 2 is available in step 3"
+          
+          Write-Host $Env:GITHUB_ENV
+          Get-Content -Path $Env:GITHUB_ENV
