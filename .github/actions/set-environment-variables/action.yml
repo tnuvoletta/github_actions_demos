@@ -31,9 +31,9 @@ runs:
         }
         '@
         $envVars = $jsonString | ConvertFrom-Json
-        $envVars.GetEnumerator() | ForEach-Object {
-          Write-Host "Setting $($_.Key) environment variable"
-          echo "::set-env name=$($_.Key)::$(($_.Value | ConvertTo-Json -Compress))"
+        foreach ($v in $envVars) {
+          Write-Host "Setting ($v.Key) environment variable"
+          echo "::set-env name=$($v.Key)::$(($v.Value | ConvertTo-Json -Compress))"
         }
 
 outputs: {}
