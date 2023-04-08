@@ -7,5 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set environment variables
-        uses: actions/set-environment-variables
+      - uses: actions/set-environment-variables
