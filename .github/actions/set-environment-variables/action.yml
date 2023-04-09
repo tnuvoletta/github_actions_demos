@@ -38,8 +38,7 @@ runs:
           PRINCIPIA_MSVC_GOOGLETEST    = 'googletest/msvc'
           PRINCIPIA_MSVC_PROTOBUF  = 'vsprojects'
           PRINCIPIA_MSVC_ZFP       = 'msvc'
-          PRINCIPIA_UBUNTU_PREREQUISITES = 'clang-$(PRINCIPIA_CLANG_VERSION) unzip wget libc++-$(PRINCIPIA_CLANG_VERSION)-dev libc++abi-$(PRINCIPIA_CLANG_VERSION)-dev binutils
-                                           make automake libtool curl cmake'
+          PRINCIPIA_UBUNTU_PREREQUISITES = 'clang-$(PRINCIPIA_CLANG_VERSION) unzip wget libc++-$(PRINCIPIA_CLANG_VERSION)-dev libc++abi-$(PRINCIPIA_CLANG_VERSION)-dev binutils make automake libtool curl cmake'
         }
         $envVars.GetEnumerator() | ForEach-Object {"$($_.Key) - $($_.Value)"}
         # To persist the values of env vars, you need to do the following
