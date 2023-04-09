@@ -11,8 +11,8 @@ runs:
     - name: Declare variables
       shell: pwsh
       run: |
-        $jsonString = @'[
-        {
+        $jsonString = @'
+        {[{
           "VAR1": "value1",
           "VAR2": "value2",
           "VAR3": "value3",
@@ -28,7 +28,8 @@ runs:
           "VAR13": "value13",
           "VAR14": "value14",
           "VAR15": "value15"
-        }]
+         }]
+        }
         '@
         $envVars = $jsonString | ConvertFrom-Json
         # To persist the values of env vars, you need to do the following
