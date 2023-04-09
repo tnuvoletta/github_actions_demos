@@ -38,12 +38,13 @@ runs:
         $PRINCIPIA_MSVC_GOOGLETEST      = "googletest/msvc"
         $PRINCIPIA_MSVC_PROTOBUF        = "vsprojects"
         $PRINCIPIA_MSVC_ZFP             = "msvc"
-        $PRINCIPIA_UBUNTU_PREREQUISITES = "clang-$PRINCIPIA_CLANG_VERSION      `
-                                           unzip wget                          `
-                                           libc++-$PRINCIPIA_CLANG_VERSION-dev `
-                                           libc++abi-$PRINCIPIA_CLANG_VERSION-dev `
-                                           binutils make automake libtool curl `
-                                           cmake"
+        $PRINCIPIA_UBUNTU_PREREQUISITES =             `
+            "clang-$PRINCIPIA_CLANG_VERSION"          `
+          + " unzip wget"                             `
+          + " libc++-$PRINCIPIA_CLANG_VERSION-dev"    `
+          + " libc++abi-$PRINCIPIA_CLANG_VERSION-dev" `
+          + " binutils make automake libtool curl"    `
+          + " cmake"
         Get-Variable PRINCIPIA_* |
             % { "$($_.Name)=$($_.Value)" } |
             Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
