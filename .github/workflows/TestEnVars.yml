@@ -22,8 +22,8 @@ jobs:
           Write-Host "VAR1= "  $Env:VAR1
           Write-Host "VAR2= "  $Env:VAR2
           Write-Host "The values of the env vars are:"
-          Write-Host $Env:GITHUB_ENV
-          Get-Content -Path $Env:GITHUB_ENV
+          cat $Env:GITHUB_ENV
+          
       - name: Consume environment variables with bash
         shell: bash
         run: |
