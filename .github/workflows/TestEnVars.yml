@@ -21,6 +21,7 @@ jobs:
           Write-Host "Use env vars from the above step with PowerShell"
           Write-Host "A_WARNING= "  $Env:A_WARNING
           Write-Host "PRINCIPIA_CLANG_VERSION= "  $Env:PRINCIPIA_CLANG_VERSION
+          Write-Host "PRINCIPIA_UBUNTU_PREREQUISITES = "  $Env:PRINCIPIA_UBUNTU_PREREQUISITES
           
       - name: Consume environment variables with bash
         shell: bash
