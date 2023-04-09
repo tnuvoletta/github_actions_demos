@@ -8,5 +8,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout
+
       - name: Set environment variables
         uses: ./.github/actions/set-environment-variables
+
+      - name: Consume environment variables with pwsh
+        shell: pwsh
+        run: |
+          Write-Host "Use env vars from the above step
+          Write-Host "VAR1= "  $Env:VAR1
+          Write-Host "VAR2= "  $Env:VAR2
+          Write-Host "The values of the env vars are:"
+          Write-Host $Env:GITHUB_ENV
+          Get-Content -Path $Env:GITHUB_ENV
+      - name: Consume environment variables with bash
+        shell: bash
+        run: |
+          echo "This step show how to access the env vars assigned in the previous step"
+          echo "${{ env.VAR1 }}" 
+          echo "${{ env.VAR2 }}" 
+          echo "${{ env.VAR3 }}" 
+          echo "${{ env.VAR4 }}"
+          echo "${{ env.VAR5 }}"
+          echo "${{ env.VAR6 }}"
