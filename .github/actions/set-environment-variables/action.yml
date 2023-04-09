@@ -11,30 +11,16 @@ runs:
     - name: Declare variables
       shell: pwsh
       run: |
-        $jsonString = @'
-        {
-          "VAR1": "value1",
-          "VAR2": "value2",
-          "VAR3": "value3",
-          "VAR4": "value4",
-          "VAR5": "value5",
-          "VAR6": "value6",
-          "VAR7": "value7",
-          "VAR8": "value8",
-          "VAR9": "value9",
-          "VAR10": "value10",
-          "VAR11": "value11",
-          "VAR12": "value12",
-          "VAR13": "value13",
-          "VAR14": "value14",
-          "VAR15": "value15"
+        $envVars = @{
+          VAR1: 'value1',
+          VAR2: 'value1',
+          VAR3: 'value1',
+          VAR4: 'value1',
+          VAR5: 'value1'
         }
-        '@
-        $envVars = $jsonString | ConvertFrom-Json -AsHashtable
         # To persist the values of env vars, you need to do the following
-        foreach ($v in $envVars) {
-          Write-Host "Setting ($v.Key) environment variable"
-          echo "$v.Key=$v.Value" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append  
+        foreach($key in $envVars.keys) {
+          Write-Host "Setting $key environment variable to value $envVars[$key]"
+          echo "$key=$envVars[$key]" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append 
         }
-
 outputs: {}
