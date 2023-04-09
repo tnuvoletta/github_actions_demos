@@ -21,4 +21,5 @@ runs:
         $envVars.GetEnumerator() | ForEach-Object {"$($_.Key) - $($_.Value)"}
         # To persist the values of env vars, you need to do the following
         $envVars.GetEnumerator() | ForEach-Object {echo "$($_.Key)= $($_.Value)" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append}
+        $foo='foo'
 outputs: {}
