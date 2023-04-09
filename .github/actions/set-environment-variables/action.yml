@@ -18,8 +18,9 @@ runs:
           VAR4 = 'value1'
           VAR5 = 'value1'
         }
+        $envVars.GetEnumerator() | ForEach-Object {"$($_.Key) - $($_.Value)"}
         foreach($var in $envVars){
-          Write-Host "V = $var.key ; Value = $envVars[$var.key]"
+          Write-Host "V = $var.Key ; Value = $var.Value"
         }
         # To persist the values of env vars, you need to do the following
         foreach($key in $envVars.keys) {
