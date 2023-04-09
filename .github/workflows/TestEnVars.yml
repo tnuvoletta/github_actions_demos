@@ -17,20 +17,18 @@ jobs:
       - name: Consume environment variables with pwsh
         shell: pwsh
         run: |
-          Write-Host $foo
-          Write-Host "Use env vars from the above step"
-          Write-Host "VAR1= "  $Env:VAR1
-          Write-Host "VAR2= "  $Env:VAR2
-          Write-Host "The values of the env vars are:"
-          cat $Env:GITHUB_ENV
+
+          Write-Host "Use env vars from the above step with PowerShell"
+          Write-Host "A_WARNING= "  $Env:A_WARNING
+          Write-Host "PRINCIPIA_CLANG_VERSION= "  $Env:PRINCIPIA_CLANG_VERSION
           
       - name: Consume environment variables with bash
         shell: bash
         run: |
-          echo "This step show how to access the env vars assigned in the previous step"
-          echo "${{ env.VAR1 }}" 
-          echo "${{ env.VAR2 }}" 
-          echo "${{ env.VAR3 }}" 
-          echo "${{ env.VAR4 }}"
-          echo "${{ env.VAR5 }}"
-          echo "${{ env.VAR6 }}"
+          echo "This step show how to access the env vars assigned in the previous step in bash shell"
+          echo "${{ env.PRINCIPIA_HEADERS_ABSEIL }}" 
+          echo "${{ env.PRINCIPIA_MSVC_GOOGLEMOCK }}" 
+          echo "${{ env.PRINCIPIA_C_FLAGS }}" 
+          echo "${{ env.PRINCIPIA_MSVC_GIPFELI }}"
+          echo "${{ env.PRINCIPIA_MSVC_ZFP }}"
+          echo "${{ env.PRINCIPIA_UBUNTU_PREREQUISITES }}"
