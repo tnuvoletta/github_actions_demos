@@ -12,10 +12,10 @@ runs:
       shell: pwsh
       run: |
         $envVars = @{
-          VAR1 = 'value1',
-          VAR2 = 'value1',
-          VAR3 = 'value1',
-          VAR4 = 'value1',
+          VAR1 = 'value1'
+          VAR2 = 'value1'
+          VAR3 = 'value1'
+          VAR4 = 'value1'
           VAR5 = 'value1'
         }
         # To persist the values of env vars, you need to do the following
