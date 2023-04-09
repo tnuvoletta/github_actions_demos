@@ -12,7 +12,7 @@ runs:
       shell: pwsh
       run: |
         $envVars = @{
-          A_WARNING = 'The Principia Makefile doesn't get these variables; flags are duplicated there.'
+          A_WARNING = "The Principia Makefile doesn't get these variables; flags are duplicated there."
           PRINCIPIA_CLANG_VERSION  = '12'
           PRINCIPIA_CXX_FLAGS      = '-std=c++20'
           PRINCIPIA_C_FLAGS        = '-fPIC -O3 -g -DNDEBUG'
