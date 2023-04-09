@@ -12,11 +12,34 @@ runs:
       shell: pwsh
       run: |
         $envVars = @{
-          VAR1 = 'value1'
-          VAR2 = 'value2'
-          VAR3 = 'value3'
-          VAR4 = 'value4'
-          VAR5 = 'value5'
+          A_WARNING = 'The Principia Makefile doesn't get these variables; flags are duplicated there.'
+          PRINCIPIA_CLANG_VERSION  = '12'
+          PRINCIPIA_CXX_FLAGS      = '-std=c++20'
+          PRINCIPIA_C_FLAGS        = '-fPIC -O3 -g -DNDEBUG'
+          PRINCIPIA_HEADERS_ABSEIL = 'absl/**/+(*.h|*.inc)'
+          PRINCIPIA_HEADERS_BENCHMARK  = 'include/**/*.h'
+          PRINCIPIA_HEADERS_GIPFELI    = 'include/**/*.h'
+          PRINCIPIA_HEADERS_GLOG   = 'src/**/*.h'
+          PRINCIPIA_HEADERS_GOOGLEMOCK = 'googlemock/include/**/*.h'
+          PRINCIPIA_HEADERS_GOOGLETEST = 'googletest/include/**/*.h'
+          PRINCIPIA_HEADERS_PROTOBUF   = 'src/**/+(*.h|*.inc|*.proto)'
+          PRINCIPIA_HEADERS_ZFP    = 'include/**/*.h'
+          PRINCIPIA_LD_FLAGS       = '-stdlib=libc++'
+          PRINCIPIA_MACOS_CXX_FLAGS    = '-D_LIBCPP_STD_VER=20'
+          PRINCIPIA_MACOS_PREREQUISITES  = 'autoconf automake libtool'
+          PRINCIPIA_MACOS_VERSION_MIN  = '10.12'
+          PRINCIPIA_MACOS_XCODE_VERSION  = '13.2'
+          PRINCIPIA_MSVC_ABSEIL    = 'msvc'
+          PRINCIPIA_MSVC_BENCHMARK = 'msvc'
+          PRINCIPIA_MSVC_EXTENSIONS    = '+(*.dll|*.exe|*.lib|*.pdb|*.props)'
+          PRINCIPIA_MSVC_GIPFELI   = 'msvc'
+          PRINCIPIA_MSVC_GLOG      = 'msvc'
+          PRINCIPIA_MSVC_GOOGLEMOCK    = 'googlemock/msvc'
+          PRINCIPIA_MSVC_GOOGLETEST    = 'googletest/msvc'
+          PRINCIPIA_MSVC_PROTOBUF  = 'vsprojects'
+          PRINCIPIA_MSVC_ZFP       = 'msvc'
+          PRINCIPIA_UBUNTU_PREREQUISITES = 'clang-$(PRINCIPIA_CLANG_VERSION) unzip wget libc++-$(PRINCIPIA_CLANG_VERSION)-dev libc++abi-$(PRINCIPIA_CLANG_VERSION)-dev binutils
+                                           make automake libtool curl cmake'
         }
         $envVars.GetEnumerator() | ForEach-Object {"$($_.Key) - $($_.Value)"}
         # To persist the values of env vars, you need to do the following
