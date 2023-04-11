@@ -46,7 +46,7 @@ runs:
           + " binutils make automake libtool curl"    `
           + " cmake"
 
-        $env | ForEach-Object {
+        Get-Variable *| ForEach-Object {
           $name = $_.Key
           $value = $_.Value
           Write-Host "Name = " $name
