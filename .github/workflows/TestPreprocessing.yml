@@ -17,10 +17,12 @@ jobs:
       - name: Consume environment variables with pwsh
         shell: pwsh
         run: |
+          Write-Host " run dir env to list all environment vars in this scope"
+          dir $env
           Write-Host " List all environment vars in this scope"
           $env | ForEach-Object {
-          $name = $_.Key
-            $value = $_.Value
+            $name  = $($_.Key)
+            $value = $($_.Value)
             Write-Host "Name = " $name
             Write-Host "Value = " $value
           }
