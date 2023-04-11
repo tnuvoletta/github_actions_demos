@@ -58,4 +58,7 @@ runs:
         Get-Variable PRINCIPIA_* |
             % { "$($_.Name)=$($_.Value)" } |
             Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+        Write-Host "Get the content of GITHUB_ENV" 
+        Write-Host $Env:GITHUB_ENV
+        Get-Content -Path $Env:GITHUB_ENV
 outputs: {}

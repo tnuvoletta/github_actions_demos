@@ -19,13 +19,9 @@ jobs:
         run: |
           Write-Host " run dir env to list all environment vars in this scope"
           dir $env
-          Write-Host " List all environment vars in this scope"
-          $env | ForEach-Object {
-            $name  = $($_.Key)
-            $value = $($_.Value)
-            Write-Host "Name = " $name
-            Write-Host "Value = " $value
-          }
+          Write-Host "Get the content of GITHUB_ENV" 
+          Write-Host $Env:GITHUB_ENV
+          Get-Content -Path $Env:GITHUB_ENV
           Write-Host "Use env vars from the above step with PowerShell"
           Write-Host "PRINCIPIA_CLANG_VERSION= "  $Env:PRINCIPIA_CLANG_VERSION
           Write-Host "PRINCIPIA_UBUNTU_PREREQUISITES = "  $Env:PRINCIPIA_UBUNTU_PREREQUISITES
