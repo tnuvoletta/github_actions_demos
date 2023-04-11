@@ -45,7 +45,14 @@ runs:
           + " libc++abi-$PRINCIPIA_CLANG_VERSION-dev" `
           + " binutils make automake libtool curl"    `
           + " cmake"
-          
+
+        $env | ForEach-Object {
+          $name = $_.Key
+          $value = $_.Value
+          Write-Host "Name = " $name
+          Write-Host "Value = " $value
+        }
+        
         Get-Variable PRINCIPIA_* |
             % { "$($_.Name)=$($_.Value)" } |
             Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
