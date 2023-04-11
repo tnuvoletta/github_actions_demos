@@ -13,6 +13,7 @@ jobs:
 
       - name: Test environment variables
         uses: ./.github/actions/preprocess-vars
+        
       - name: Consume environment variables with pwsh
         shell: pwsh
         run: |
