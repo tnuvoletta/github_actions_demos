@@ -11,9 +11,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Set environment variables
+      - name: Test environment variables
         uses: ./.github/actions/preprocess-vars
-
       - name: Consume environment variables with pwsh
         shell: pwsh
         run: |
