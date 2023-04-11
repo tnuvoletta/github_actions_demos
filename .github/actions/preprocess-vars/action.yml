@@ -47,8 +47,8 @@ runs:
           + " cmake"
 
         Get-Variable *| ForEach-Object {
-          $name = $_.Key
-          $value = $_.Value
+          $name = $($_.Key)
+          $value = $($_.Value)
           Write-Host "Name = " $name
           Write-Host "Value = " $value
         }
