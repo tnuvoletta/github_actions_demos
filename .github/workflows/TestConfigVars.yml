@@ -18,10 +18,10 @@ jobs:
         shell: bash
         run: |
           curl -L \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/orgs/mockingbirdnest/actions/variables
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer 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" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          https://api.github.com/repos/tnuvoletta/REPO/actions/variables
 
           echo "This step show how to access the env vars assigned in the previous step in bash shell"
           echo "${{ env.PRINCIPIA_HEADERS_ABSEIL }}" 
