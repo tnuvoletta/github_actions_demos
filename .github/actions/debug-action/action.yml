@@ -11,11 +11,7 @@ runs:
   steps:
     - name: Checkout to repository
       uses: actions/checkout@v3
-      with:
-        repository: ${{ inputs.repository }}
-        path: ${{ inputs.path }}
-        fetch-depth: 0
-
+ 
     - id: get-versions
       shell: bash
       run: echo "test=world" >> $GITHUB_OUTPUT
