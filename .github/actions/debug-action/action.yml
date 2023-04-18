@@ -1,17 +1,14 @@
-name: 'debug-action'
-description: 'List the latest tags for a GitHub repo'
-inputs:{}
+name: debug-action
+inputs: {}
 outputs:
   tags-list:
     description: "Latest versions"
-    # value: "It works"
     value: ${{ steps.get-versions.outputs.test }}
 runs:
   using: "composite"
   steps:
     - name: Checkout to repository
       uses: actions/checkout@v3
- 
     - id: get-versions
       shell: bash
       run: echo "test=world" >> $GITHUB_OUTPUT
