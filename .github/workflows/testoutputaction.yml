@@ -1,0 +1,29 @@
+name: Test Action Output
+
+on:
+  workflow_dispatch:
+
+jobs:
+  list_tags:
+    runs-on: Linux
+    outputs:
+      output1: ${{ steps.list-versions.outputs.tags-list }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: list-versions
+        uses: ./.github/actions/debug-action
+        with:
+          repository: ago-sharedtferegistry/terraform-azure-mpi_support
+          path: support
+          versions-history: 10
+
+  my_echo:
+    runs-on: Linux
+    needs: list_tags
+    steps:
+      - name: Echo previous outputs
+        run: |
+          echo "$OUTPUT1"
+        env:
+          OUTPUT1: ${{needs.list_tags.outputs.output1}}
