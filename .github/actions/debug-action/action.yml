@@ -1,0 +1,30 @@
+name: 'debug-action'
+description: 'List the latest tags for a GitHub repo'
+inputs:
+  repository:
+    description: 'Full repository name'
+    required: true
+  path:
+    description: 'Path to checkout the repository'
+    required: true
+  versions-history:
+    description: 'Number of versions to return from the repository'
+    required: true
+outputs:
+  tags-list:
+    description: "Latest versions"
+    # value: "It works"
+    value: ${{ steps.get-versions.outputs.test }}
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout to repository
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.repository }}
+        path: ${{ inputs.path }}
+        fetch-depth: 0
+
+    - id: get-versions
+      shell: bash
+      run: echo "test=world" >> $GITHUB_OUTPUT
