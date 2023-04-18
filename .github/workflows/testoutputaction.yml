@@ -13,11 +13,6 @@ jobs:
 
       - id: list-versions
         uses: ./.github/actions/debug-action
-        with:
-          repository: ago-sharedtferegistry/terraform-azure-mpi_support
-          path: support
-          versions-history: 10
-
   my_echo:
     runs-on: Linux
     needs: list_tags
