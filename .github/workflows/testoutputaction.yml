@@ -5,7 +5,7 @@ on:
 
 jobs:
   list_tags:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.list-versions.outputs.tags-list }}
     steps:
@@ -14,7 +14,7 @@ jobs:
       - id: list-versions
         uses: ./.github/actions/debug-action
   my_echo:
-    runs-on: Linux
+    runs-on: ubuntu-latest
     needs: list_tags
     steps:
       - name: Echo previous outputs
