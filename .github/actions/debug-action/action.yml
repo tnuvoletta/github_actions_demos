@@ -1,15 +1,6 @@
 name: 'debug-action'
 description: 'List the latest tags for a GitHub repo'
-inputs:
-  repository:
-    description: 'Full repository name'
-    required: true
-  path:
-    description: 'Path to checkout the repository'
-    required: true
-  versions-history:
-    description: 'Number of versions to return from the repository'
-    required: true
+inputs:{}
 outputs:
   tags-list:
     description: "Latest versions"
