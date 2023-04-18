@@ -1,8 +1,6 @@
 name: Test Action Output
 
-on:
-  workflow_dispatch:
-
+on: [workflow_dispatch]
 jobs:
   list_tags:
     runs-on: ubuntu-latest
