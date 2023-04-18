@@ -5,7 +5,7 @@ on:
 
 jobs:
   list_tags:
-    runs-on: Linux
+   runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.list-versions.outputs.tags-list }}
     steps:
