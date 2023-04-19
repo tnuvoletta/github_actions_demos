@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.list-versions.outputs.tags-list }}
+      output2: ${{ steps.list-versions.outputs.tags-list2 }}
     steps:
       - uses: actions/checkout@v3
 
@@ -18,5 +19,7 @@ jobs:
       - name: Echo previous outputs
         run: |
           echo "$OUTPUT1"
+          echo "$OUTPUT2"
         env:
           OUTPUT1: ${{needs.list_tags.outputs.output1}}
+          OUTPUT2: ${{needs.list_tags.outputs.output2}}
